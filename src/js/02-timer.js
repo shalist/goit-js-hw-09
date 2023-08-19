@@ -15,6 +15,7 @@ const options = {
         }
         else {
             startBtn.removeAttribute('disabled');
+            input.setAttribute('disabled', true);
         }
     },
 };
@@ -35,11 +36,33 @@ function convertMs(ms) {
     return { days, hours, minutes, seconds };
 };
 
+const input = document.querySelector('#datetime-picker')
 const startBtn = document.querySelector('[data-start]');
 const daysValue = document.querySelector('[data-days]');
 const hoursValue = document.querySelector('[data-hours]');
 const minutesValue = document.querySelector('[data-minutes]');
 const secondsValue = document.querySelector('[data-seconds]');
+const div = document.querySelector('.timer');
+const field = div.querySelectorAll('.field');
+
+
+div.style.display = "flex";
+
+field.forEach(field => {
+    field.style.display = "flex";
+    field.style.flexWrap = " wrap";
+    field.style.alignItems = "center";
+    field.style.flexDirection = "column";
+    field.style.padding = "10px";
+
+    const valueNumber = field.querySelector('.value');
+    if (valueNumber) {
+        valueNumber.style.fontSize = "35px";
+    };
+});
+
+
+
 
 let timerId = null;
 
